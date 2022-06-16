@@ -9,9 +9,9 @@ struct Args {
     list: Option<ListCommands>
 }
 
-#[derive(Subcommand)]
+#[derive(Subcommand, Debug)]
 enum ListCommands {
-    Test {
+    List {
         #[clap(short, long, action)]
         all: bool,
     }
@@ -19,8 +19,8 @@ enum ListCommands {
 
 fn main() {
     let args = Args::parse();
-    if let Some(list) = args.list.unwrap() {
-        println!("His name is {}", name);
+    if let Some(list) = args.list {
+        println!("His name is {:?}", list);
     }
     else {
             // let cwd = std::env::current_dir().unwrap();
